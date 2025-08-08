@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ChevronDown, Search, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Button from './Button';
+import { experiumImageUrl } from '@/utils/common'
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -33,13 +34,13 @@ const Navbar = () => {
     return (
         // <nav className="bg-black/85 sticky top-0 z-50 backdrop-blur-sm">
         <nav className="bg-white fixed right-0 left-0 top-0 z-50 backdrop-blur-sm">
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
                 <div className="flex items-center justify-between h-24">
                     {/* Logo */}
                     <div className="flex-shrink-0 ">
                         <Link href="/" className="flex items-center">
                             <Image
-                                src={ "/placeholder.svg"}
+                                src={experiumImageUrl('logo.svg')}
                                 alt={"Aparna Logo"}
                                 width={110}
                                 height={42}
@@ -90,7 +91,7 @@ const Navbar = () => {
                             ))}
 
                             <Link href="/contact">
-                                <Button variant='brandoutline'>
+                                <Button className='clear-btn'>
                                     CLUB
                                 </Button>
                             </Link>
@@ -98,7 +99,7 @@ const Navbar = () => {
                             &nbsp;
                             {/* Contact Button */}
                             <Link href="/contact">
-                                <Button className='uppercase'>
+                                <Button className='blue-btn'>
                                     Plan your visit
                                 </Button>
                             </Link>
@@ -162,20 +163,20 @@ const Navbar = () => {
 
                         {/* Mobile Search */}
                         <div className="px-3 py-2">
-                            <Link href="/contact">
-                                <Button variant='brandoutline' className='w-full'>
+                            <Link className='w-[176px]' href="/contact">
+                                <button  className=' w-[100%] clear-btn'>
                                     CLUB
-                                </Button>
+                                </button>
                             </Link>
                         </div>
 
                         {/* Mobile Contact Button */}
                         <div className="px-3 py-2">
 
-                            <Link href="/contact">
-                                <Button className='uppercase w-full'>
+                            <Link  className='w-[176px]'  href="/contact">
+                                <button className='  w-[100%] blue-btn '>
                                     Plan your visit
-                                </Button>
+                                </button>
                             </Link>
                         </div>
                     </div>
