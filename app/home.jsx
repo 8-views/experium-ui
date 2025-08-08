@@ -7,6 +7,7 @@ import ImageText from '@/components/ImageText'
 import ThumbsGallery from '@/components/ThumbsGallery'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
+import Banner from '@/components/Banner'
 
 
 const FantasyZoneImages = [
@@ -109,6 +110,7 @@ const Home = () => {
   return (
 
     <>
+      <Banner />
       <SliderText
         title="Fantasy Land"
         subtitle="Step Into a Living Dream"
@@ -186,9 +188,9 @@ const Home = () => {
         backgroundColor="bg-cream"
 
       />
-<ThumbsGallery/>
-<FAQ/>
-<Footer/>
+      <ThumbsGallery />
+      <FAQ />
+      <Footer />
 
     </>
   )
