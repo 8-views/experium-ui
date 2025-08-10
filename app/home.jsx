@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import SliderText from '@/components/SliderText'
 import { experiumImageUrl } from '@/utils/common'
@@ -111,8 +112,20 @@ const SculptureImages = [
 
 const Home = () => {
   return (
-
+      
     <>
+    <BannerSection
+  className="h-[85vh] sm:h-[100vh] mt-20"
+  bgImage={experiumImageUrl('home-banner.png')}
+  logo={experiumImageUrl('logo.svg')}
+  heading1="Welcome to Our World"
+  // heading2="Innovation Starts Here"
+  paragraph1="A world-class destination, crafted for India."
+  // paragraph2="Join us and experience the future of technology."
+  // buttonText="Learn More"
+  // onButtonClick={() => console.log('Banner button clicked')}
+/>
+
       <SliderText
         title="Fantasy Land"
         subtitle="Step Into a Living Dream"
@@ -194,6 +207,17 @@ const Home = () => {
 
       />
 <ThumbsGallery/>
+    <BannerSection
+  className="h-[85vh] sm:h-[100vh] mt-20"
+  bgImage={experiumImageUrl('aboutus-banner.png')}
+  logo={experiumImageUrl('logo.svg')}
+  heading1="Welcome to Our World"
+  // heading2="Innovation Starts Here"
+  paragraph1="A world-class destination, crafted for India."
+  // paragraph2="Join us and experience the future of technology."
+  // buttonText="Learn More"
+  // onButtonClick={() => console.log('Banner button clicked')}
+/>
 <FAQ/>
 <Footer/>
 
