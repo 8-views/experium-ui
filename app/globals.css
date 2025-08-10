@@ -7,17 +7,16 @@
   --brand: #354EA0;
 }
 
-@theme inline 
-{
-   --color-brandColor:rgba(53, 78, 160, 1);
+@theme inline {
+  --color-brandColor: rgba(53, 78, 160, 1);
 
-   --color-darkbrown: rgba(70, 43, 23, 1);
- 
+  --color-darkbrown: rgba(70, 43, 23, 1);
 
-   --color-gray: rgba(82, 82, 82, 1);
 
-   --color-cream: rgba(255, 252, 243, 1); 
-      --color-brown: rgba(168, 106, 70, 1); 
+  --color-gray: rgba(82, 82, 82, 1);
+
+  --color-cream: rgba(255, 252, 243, 1);
+  --color-brown: rgba(168, 106, 70, 1);
 }
 
 
@@ -35,10 +34,16 @@
   }
 } */
 
+@theme inline {
+  --color-brandColor: #354EA0;
+  --color-brown: #321B08;
+}
+
 /* This dims all thumbnail slides */
 .mySwiper .swiper-slide {
   position: relative;
-  filter: brightness(0.5); /* darkens all thumbnails */
+  filter: brightness(0.5);
+  /* darkens all thumbnails */
   transition: filter 0.3s ease;
 }
 
@@ -53,8 +58,7 @@ body {
 }
 
 h1,
-h2
- {
+h2 {
   font-family: var(--font-vigosamine);
 }
 
@@ -64,16 +68,15 @@ h2
 .clear-btn {
   @apply px-7 py-1 border border-brandColor bg-transparent rounded-full sm:text-lg text-base font-normal tracking-wide text-brandColor;
 }
+
 .blue-btn {
   @apply px-7 py-1 border border-brandColor bg-brandColor rounded-full sm:text-lg text-base font-normal tracking-wide text-white;
 }
 
 .heading {
-  @apply text-3xl  md:text-4xl lg:text-5xl font-light text-darkbrown mb-6 md:mb-8;
+  @apply text-3xl md:text-4xl lg:text-5xl font-light text-darkbrown mb-6 md:mb-8;
 }
 
 .para {
-  @apply text-sm  sm:text-lg  text-gray leading-relaxed ;
+  @apply text-sm sm:text-lg text-gray leading-relaxed;
 }
-
-

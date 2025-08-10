@@ -7,6 +7,7 @@ import ImageText from '@/components/ImageText'
 import ThumbsGallery from '@/components/ThumbsGallery'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
+import Banner from '@/components/Banner'
 import FixedVideo from '@/components/FixedVideo'
 import VideoAnimation from '@/components/VideoAnimation'
 import BannerSection from '@/components/bannerSection'
@@ -112,18 +113,6 @@ const Home = () => {
   return (
 
     <>
-    {/* <BannerSection
-  className="h-screen"
-  bgImage=" experiumImageUrl('home-banner.png')"
-  logo="/images/logo.png"
-  heading1="Welcome to Our World"
-  heading2="Innovation Starts Here"
-  paragraph1="We create powerful solutions that transform businesses."
-  paragraph2="Join us and experience the future of technology."
-  buttonText="Learn More"
-  onButtonClick={() => console.log('Banner button clicked')}
-/> */}
-
       <SliderText
         title="Fantasy Land"
         subtitle="Step Into a Living Dream"
@@ -204,9 +193,6 @@ const Home = () => {
         backgroundColor="bg-cream"
 
       />
-       <div className=' bg-transparent'>
-      <VideoAnimation />
-      </div>
 <ThumbsGallery/>
 <FAQ/>
 <Footer/>
