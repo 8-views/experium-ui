@@ -21,7 +21,7 @@ export default function SliderText({
     const imageOrder = textFirstOnDesktop ? "order-1 lg:order-2" : "order-1 lg:order-1"
 
     return (
-        <div className={`w-full ${backgroundColor}`}>
+        <div className={` w-full ${backgroundColor}`}>
             <div className="max-w-7xl mx-auto px-4  lg:px-4 py-8 lg:py-16">
              <h2 className="heading text-center">{heading}</h2>
                 <div className="grid items-center grid-cols-1 lg:grid-cols-2  gap-4 md:gap-16 min-h-[500px]">

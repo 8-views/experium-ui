@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-Triggered Video</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .home-page {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .trigger-section {
+            height: 40vh;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            margin: 20px;
+            border-radius: 10px;
+        }
+        
+        .content-after {
+            height: 100vh;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        #background-video {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        #background-video.show {
+            opacity: 1;
+        }
+        
+        .video-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        
+        .demo-video-placeholder {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Status indicator for debugging -->
+    <div class="video-status" id="status">
+        Status: Initializing...
+    </div>
+    
+    <!-- Home page content -->
+    <div style="height:100vh" class="home-page">
+        <div>
+            <h1>Welcome to Our Site</h1>
+            <p>Scroll down to trigger the background video</p>
+            <div style="margin-top: 20px;">
+                <small>↓ Scroll down ↓</small>
+            </div>
+        </div>
+    </div>
+    
+    <!-- This is the section that will trigger the video -->
+    <div style="height:40vh" id="trigger-section" class="trigger-section">
+        <div>
+            <h2>🎬 This section triggers video playback</h2>
+            <p>When this section comes into view, the background video will start playing</p>
+        </div>
+    </div>
+    
+    <!-- Content after video section -->
+    <div class="content-after">
+        <div>
+            <h2>More Content</h2>
+            <p>The video continues playing in the background</p>
+            <p>Scroll back up to see the video pause when the trigger section leaves view</p>
+        </div>
+    </div>
+    
+    <!-- Fixed video that starts when section enters view -->
+    <video
+        id="background-video"
+        muted
+        playsinline
+        loop
+        preload="auto"
+        class="demo-video-placeholder"
+    >
+        <!-- Demo video from a reliable CDN -->
+        <source src="./dummy.mp4" type="video/mp4" />
+        <!-- Fallback for browsers that don't support video -->
+        Your browser does not support the video tag.
+    </video>
+    
+    <script>
+        // Get elements
+        const trigger = document.getElementById('trigger-section');
+        const video = document.getElementById('background-video');
+        const status = document.getElementById('status');
+        
+        // Update status function
+        function updateStatus(message) {
+            status.textContent = `Status: ${message}`;
+            console.log('Video Status:', message);
+        }
+        
+        // Video event listeners for debugging
+        video.addEventListener('loadstart', () => updateStatus('Loading started'));
+        video.addEventListener('canplay', () => updateStatus('Can play - ready to start'));
+        video.addEventListener('playing', () => updateStatus('Playing'));
+        video.addEventListener('pause', () => updateStatus('Paused'));
+        video.addEventListener('ended', () => updateStatus('Ended'));
+        video.addEventListener('error', (e) => {
+            updateStatus(`Error: ${e.target.error?.message || 'Unknown error'}`);
+            console.error('Video error:', e.target.error);
+        });
+        
+        // Wait for video to be ready
+        video.addEventListener('canplay', function() {
+            updateStatus('Video loaded and ready');
+            
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateStatus('Section in view - starting video');
+                        video.classList.add('show');
+                        
+                        // Play video with promise handling
+                        const playPromise = video.play();
+                        
+                        if (playPromise !== undefined) {
+                            playPromise
+                                .then(() => {
+                                    updateStatus('Video playing successfully');
+                                })
+                                .catch(error => {
+                                    updateStatus(`Play failed: ${error.message}`);
+                                    console.error('Video play failed:', error);
+                                    
+                                    // Try to play without sound as fallback
+                                    video.muted = true;
+                                    video.play().catch(e => {
+                                        updateStatus(`Muted play also failed: ${e.message}`);
+                                    });
+                                });
+                        }
+                    } else {
+                        updateStatus('Section out of view - pausing video');
+                        video.pause();
+                        video.classList.remove('show');
+                    }
+                });
+            }, {
+                threshold: 0.3, // 30% of section must be visible
+                rootMargin: '0px 0px -50px 0px' // Slight offset
+            });
+            
+            // Start observing
+            observer.observe(trigger);
+            updateStatus('Observer active - scroll to trigger');
+        });
+        
+        // Handle case where video might already be loaded
+        if (video.readyState >= 3) { // HAVE_FUTURE_DATA or higher
+            video.dispatchEvent(new Event('canplay'));
+        }
+        
+        // Additional fallback - try to load the video
+        video.load();
+        
+        // Hide status after 10 seconds for cleaner demo
+        setTimeout(() => {
+            status.style.opacity = '0.3';
+        }, 10000);
+    </script>
+</body>
+</html>
