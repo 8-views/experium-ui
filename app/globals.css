@@ -80,3 +80,25 @@ h2 {
 .para {
   @apply text-sm sm:text-lg text-gray leading-relaxed;
 }
+
+ 
+     
+   .swiper-pagination {
+          position: relative !important;
+          margin-top: 1.5rem !important;
+          text-align: center;
+        }
+        
+     .swiper-pagination-bullet {
+          margin: 0 6px !important;
+          transition: all 0.3s ease !important;
+        }
+ .swiper-pagination-bullet:hover {
+          transform: scale(1.2);
+        }
+
+        @media (max-width: 1024px) {
+.swiper-pagination {
+            margin-top: 1rem !important;
+          }
+        }

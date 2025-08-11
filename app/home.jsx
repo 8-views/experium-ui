@@ -13,7 +13,7 @@ import FixedVideo from '@/components/FixedVideo'
 import VideoAnimation from '@/components/VideoAnimation'
 import BannerSection from '@/components/bannerSection'
 
-
+import ViralVideos from '@/components/ViralVideos';
 const FantasyZoneImages = [
   {
     id: 1,
@@ -206,18 +206,20 @@ const Home = () => {
         backgroundColor="bg-cream"
 
       />
+      <ViralVideos/>
 <ThumbsGallery/>
     <BannerSection
-  className="h-[85vh] sm:h-[100vh] mt-20"
-  bgImage={experiumImageUrl('aboutus-banner.png')}
-  logo={experiumImageUrl('logo.svg')}
-  heading1="Welcome to Our World"
-  // heading2="Innovation Starts Here"
+  className="h-[85vh] sm:h-[90vh] mt-20"
+  bgImage={experiumImageUrl('home-banner2.png')}
+  // logo={experiumImageUrl('logo.svg')}
+  heading1="Immerse Yourself in Luxury and "
+  heading2="Nature at Experium Club."
   paragraph1="A world-class destination, crafted for India."
   // paragraph2="Join us and experience the future of technology."
-  // buttonText="Learn More"
-  // onButtonClick={() => console.log('Banner button clicked')}
+  buttonText="EXPLORE THE CLUB"
+  onButtonClick={() => console.log('Banner button clicked')}
 />
+
 <FAQ/>
 <Footer/>
 

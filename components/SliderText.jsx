@@ -94,28 +94,7 @@ export default function SliderText({
             </div>
 
         
-            <style jsx global>{`
-        .image-slider-swiper .swiper-pagination {
-          position: relative !important;
-          margin-top: 1.5rem !important;
-          text-align: center;
-        }
-        
-        .image-slider-swiper .swiper-pagination-bullet {
-          margin: 0 6px !important;
-          transition: all 0.3s ease !important;
-        }
-        
-        .image-slider-swiper .swiper-pagination-bullet:hover {
-          transform: scale(1.2);
-        }
-
-        @media (max-width: 1024px) {
-          .image-slider-swiper .swiper-pagination {
-            margin-top: 1rem !important;
-          }
-        }
-      `}</style>
+      
         </div>
     )
 }
