@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useRef,useState,useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(false);
-
+  
   useEffect(() => {
     const media = window.matchMedia(query);
     if (media.matches !== matches) {
@@ -14,65 +15,59 @@ const useMediaQuery = (query) => {
     media.addEventListener('change', listener);
     return () => media.removeEventListener('change', listener);
   }, [matches, query]);
-
+  
   return matches;
 };
 
-const VideoAnimation = () => {
+const VideoAnimation2 = () => {
   const videoContainer = useRef(null);
-const isSmallScreen = useMediaQuery('(max-width: 640px)');
+  const isSmallScreen = useMediaQuery('(max-width: 640px)');
+  
   const { scrollYProgress } = useScroll({
     target: videoContainer,
-    offset: ['start end', 'end start'], // Customize when animation begins and ends
+    offset: ['start end', 'end start'], 
   });
+  
 
-  // Animated styles
   const width = useTransform(scrollYProgress, [0, 1], ['50%', '200%']);
   const borderRadius = useTransform(
     scrollYProgress,
     [0, 1],
-    ['800px 800px 0px 0px', '0px  0px 0px 0px']
+    ['800px 800px 0px 0px', '0px 0px 0px 0px']
   );
-  // const translateY = useTransform(scrollYProgress, [0, 1], [-80, 100]);
-
+  
   return (
-    <section
-
-      data-slice-type="arch_media"
-      data-slice-variation="default"
-      className="flex rounded-none relative justify-center aspect-screen    h-[140vh] xl:h-[190vh] bg-cream pt-20 xl:aspect-auto sandikala-rounded-exception"
-    >
+  <div className="bg-red-500 ">
       <motion.div
         ref={videoContainer}
-        className=" rounded-t-[50%] relative overflow-hidden flex justify-center bg-cover bg-center bg-no-repeat"
+        className="rounded-t-[50%]  overflow-hidden flex justify-center h-[150vh]  !bg-transparent bg-cover bg-center bg-no-repeat"
         style={{
           width,
-      ...(isSmallScreen && { borderRadius }),
-        
-     
-    
+          ...(isSmallScreen && { borderRadius }),
         }}
-          //  data-apply-border-radius="sm-only"
       >
-        {/* <div className="rounded-none w-screen h-[180vh] object-cover"> */}
-          <video
-            className="w-full    h-full object-cover"
+        {/* Fixed video container - no transforms applied */}
+        <div className="  w-full h-full">
+          {/* <video
+            className="w-1/2 h-full object-cover bg-transparent"
             muted
             preload="none"
             playsInline
             loop
             autoPlay
+          
           >
             <source
               src="https://11views.com/experium-assets/Experim.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
-          </video>
-        {/* </div> */}
+          </video> */}
+        </div>
       </motion.div>
-    </section>
+      </div>
+
   );
 };
 
-export default VideoAnimation;
+export default VideoAnimation2;

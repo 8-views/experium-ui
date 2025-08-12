@@ -33,6 +33,7 @@ const FixedVideo = () => {
 
   return (
     <div
+    data-scroll data-scroll-section data-scroll-speed="-.7"
       ref={containerRef}
       className="play relative h-screen w-full overflow-hidden"
     >
@@ -47,7 +48,7 @@ const FixedVideo = () => {
         loop
       >
         <source
-          src="https://11views.com/aparna-website-imgs/deccan.mp4"
+          src="https://11views.com/experium-assets/Experim.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.

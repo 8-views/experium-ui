@@ -7,6 +7,10 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import Stick from './Stick'
 
+
+import { useEffect } from 'react';
+import React from 'react'
+
 export default function SliderText({
     title,
     subtitle,
@@ -19,12 +23,16 @@ export default function SliderText({
 }) {
     const textOrder = textFirstOnDesktop ? "order-2 lg:order-1" : "order-2 lg:order-2"
     const imageOrder = textFirstOnDesktop ? "order-1 lg:order-2" : "order-1 lg:order-1"
+ 
 
+
+    
     return (
-        <div className={` w-full ${backgroundColor}`}>
+        <div  className={` w-full ${backgroundColor}`}>
             <div className="max-w-7xl mx-auto px-4  lg:px-4 py-8 lg:py-16">
-             <h2 className="heading text-center">{heading}</h2>
-                <div className="grid items-center grid-cols-1 lg:grid-cols-2  gap-4 md:gap-16 min-h-[500px]">
+                <h2 className="heading text-center">{heading}</h2>
+                <div className={`grid items-center grid-cols-1 ${textFirstOnDesktop ? 'lg:grid-cols-[40%_60%]  gap-4 md:gap-0' : 'lg:grid-cols-[60%_40%] gap-4 md:gap-16'
+                    } min-h-[500px]`}>
 
                     {/* Text Section */}
                     <div className={`text-center lg:text-left lg:w-3/4  w-full space-y-4 ${textOrder}`}>
@@ -64,10 +72,10 @@ export default function SliderText({
                             navigation={false}
                             pagination={{
                                 clickable: true,
-                               
+
                             }}
                             autoplay={
-                               true
+                                true
                             }
                             loop={true}
                             className="image-slider-swiper "
@@ -76,7 +84,7 @@ export default function SliderText({
                                 <SwiperSlide key={image.id}>
                                     <div className="relative  w-full ">
                                         <Image
-                                            src={image.src || "/placeholder.svg"}
+                                            src={image.src ||"/placeholder.svg"}
                                             alt={image.alt}
                                             width={1000}
                                             height={468}
@@ -93,8 +101,8 @@ export default function SliderText({
                 </div>
             </div>
 
-        
-      
+
+
         </div>
     )
 }

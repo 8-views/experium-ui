@@ -12,7 +12,7 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const navItems = [
-        { name: 'About Us', href: '/about-us' },
+        { name: 'About Us', href: '/aboutus' },
         {
             name: 'Attractions',
             href: '/attractions',
@@ -41,7 +41,7 @@ const Navbar = () => {
                         <Link href="/" className="flex items-center">
                             <Image
                                 src={experiumImageUrl('logo.svg')}
-                                alt={"Aparna Logo"}
+                                alt={"experium Logo"}
                                 width={110}
                                 height={42}
                                 className="object-contain"
@@ -65,12 +65,12 @@ const Navbar = () => {
                                             </button>
 
                                             {isDropdownOpen && (
-                                                <div className="absolute right-0 mt-2 w-48  rounded-md shadow-lg py-1 z-50">
+                                                <div className="absolute right-0 mt-2   rounded-md shadow-lg py-1 z-50">
                                                     {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
                                                         <Link
                                                             key={dropdownIndex}
                                                             href={dropdownItem.href}
-                                                            className="block px-4 py-2 border-b border-gray-200 last:border-b-0 text-black uppercase hover:bg-gray-100 hover:text-gray-900"
+                                                            className="block px-4 py-2 border-b border-gray-200 bg-white last:border-b-0 text-black uppercase hover:bg-gray-100 hover:text-gray-900"
                                                             onClick={() => setIsDropdownOpen(false)}
                                                         >
                                                             {dropdownItem.name}
@@ -82,7 +82,7 @@ const Navbar = () => {
                                     ) : (
                                         <Link
                                             href={item.href}
-                                            className="text-black uppercase hover:text-blueColor px-3 py-2 text-base  transition-colors duration-200"
+                                            className="text-black  whitespace-nowrap uppercase hover:text-blueColor px-3 py-2 text-base  transition-colors duration-200"
                                         >
                                             {item.name}
                                         </Link>

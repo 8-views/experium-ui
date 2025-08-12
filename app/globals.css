@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import 'locomotive-scroll/dist/locomotive-scroll.css';
 :root {
   /* --background: #ffffff;
   --foreground: #171717; */
@@ -11,9 +11,10 @@
   --color-brandColor: rgba(53, 78, 160, 1);
 
   --color-darkbrown: rgba(70, 43, 23, 1);
-
+  --color-darkblue: rgba(33, 40, 50, 1);
 
   --color-gray: rgba(82, 82, 82, 1);
+  --color-lightbrown:rgba(168, 106, 70, 1);
 
   --color-cream: rgba(255, 252, 243, 1);
   --color-brown: rgba(168, 106, 70, 1);
@@ -55,6 +56,7 @@
 body {
   font-family: var(--font-gilroy);
     overflow-x: hidden;
+     scroll-behavior: auto !important;
 }
 
 h1,
@@ -87,18 +89,27 @@ h2 {
           position: relative !important;
           margin-top: 1.5rem !important;
           text-align: center;
+      
         }
         
      .swiper-pagination-bullet {
           margin: 0 6px !important;
           transition: all 0.3s ease !important;
+          background-color: rgba(53, 78, 160, 1) !important;
+          border:1px solid rgba(53, 78, 160, 1) !important;
+             height:10px !important;
+           width: 10px !important;
+      
+     
         }
  .swiper-pagination-bullet:hover {
           transform: scale(1.2);
+        
         }
 
         @media (max-width: 1024px) {
 .swiper-pagination {
             margin-top: 1rem !important;
+
           }
         }

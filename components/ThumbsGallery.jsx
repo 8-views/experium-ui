@@ -40,19 +40,19 @@ export default function ThumbsGallery() {
 
                     <div className='overflow-visible relative sm:px-16'>
                         {/* Previous Button */}
-                        <button 
+                        <button
                             ref={prevRef}
                             className="absolute border  !bg-transparent left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full   hidden sm:flex items-center justify-center transition-all duration-200 z-10"
                         >
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16" /><path d="M2 12H22" /></svg>
                         </button>
 
                         {/* Next Button */}
-                        <button 
+                        <button
                             ref={nextRef}
                             className="absolute border !bg-transparent  right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg hidden sm:flex items-center justify-center transition-all duration-200 z-10"
                         >
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16" /><path d="M2 12H22" /></svg>
                         </button>
 
                         {/* Main Image Slider */}
@@ -96,11 +96,22 @@ export default function ThumbsGallery() {
                             onSwiper={setThumbsSwiper}
                             loop={true}
                             spaceBetween={10}
-                            slidesPerView={8}
+                            slidesPerView={4} // default fallback
                             freeMode={true}
                             watchSlidesProgress={true}
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper mt-4"
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 4,
+                                },
+                                640: {
+                                    slidesPerView: 4,
+                                },
+                                1024: {
+                                    slidesPerView: 8,
+                                },
+                            }}
                         >
                             {images.map((image) => (
                                 <SwiperSlide key={image.id}>
@@ -117,9 +128,9 @@ export default function ThumbsGallery() {
                             ))}
                         </Swiper>
                     </div>
-                    
+
                     <p className='para text-center'>At Experium, every season brings something unforgettable, from vibrant festivals to immersive cultural celebrations. Our events are designed to connect people through joy, color, music, and shared experiences in a one-of-a-kind eco-luxury setting.</p>
-                    
+
                     <Link href="/events" className="flex justify-center ">
                         <button className='clear-btn'>
                             EXPLORE EVENTS

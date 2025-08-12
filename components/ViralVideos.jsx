@@ -17,31 +17,39 @@ const ViralVideos = () => {
     const [currentVideo, setCurrentVideo] = useState(null);
 
     const videos = [
+           {
+            id: 2,
+            thumbnailUrl: experiumImageUrl('love-note-3.png'),
+            videoUrl:
+                'https://www.youtube.com/embed/MZJLWiHQffs',
+            title: '',
+             heading: 'Mr Chiranjeevi ',
+             paragraph: 'At Experium, every experience becomes a memory...'
+        },
         {
             id: 1,
             thumbnailUrl: experiumImageUrl('love-note-1.png'),
-            videoUrl: 'https://www.youtube.com/embed/JAXhvnsSTug?rel=0',
-            title: 'Our Happy Client - Birla Open Minds I Client Stories I 8 Views',
+            videoUrl: 'https://youtube.com/embed/Ak-N4AVDaAc',
+            title: 'Our Happy Client - Birla Open Minds I Client Stories I 8 View',
+                     heading: 'Siddu Jonnalagadda',
+             paragraph: 'The gardens are surreal....'
         },
-        {
-            id: 2,
-            thumbnailUrl: experiumImageUrl('love-note-1.png'),
-            videoUrl:
-                'https://www.youtube.com/embed/RHdEe6A6UkU?modestbranding=1&rel=0',
-            title: 'Our Happy Customer One Roze II 8 Views',
-        },
+     
         {
             id: 3,
-            thumbnailUrl: experiumImageUrl('love-note-1.png'),
-            videoUrl: 'https://www.youtube.com/embed/pjUYN4vHnhU?rel=0',
-            title: 'APMS | Ensuring Smooth Living at Aparna Communities',
+            thumbnailUrl: experiumImageUrl('love-note-2.png'),
+            videoUrl: 'https://youtube.com/embed/ZIJj4NLp4bo',
+            title: '',
+            heading: 'Vaishnavi Chaitanya',
+             paragraph: 'Attention to detail is mind-blowing...,'
         },
-        {
-            id: 4,
-            thumbnailUrl: experiumImageUrl('love-note-1.png'),
-            videoUrl: 'https://www.youtube.com/embed/NZNzvl1wPSE?rel=0',
-            title: 'Exploring Akshara Ananda with Founder Kavitha Mantha',
-        },
+        // {
+        //     id: 4,
+        //     thumbnailUrl: experiumImageUrl('love-note-1.png'),
+        //     videoUrl: 'https://www.youtube.com/embed/NZNzvl1wPSE?rel=0',
+        //     title: 'Exploring Akshara Ananda with Founder Kavitha Mantha',
+               
+        // },
     ];
 
     const handleVideoClick = (video) => {
@@ -91,26 +99,22 @@ const ViralVideos = () => {
                                 <Image
                                     src={video.thumbnailUrl}
                                     alt={video.title}
-                                    height={576}
-                                    width={440}
+                                    height={1000}
+                                    width={1000}
                                     style={{ objectFit: 'cover' }}
                                     priority
                                 />
                                 <div className='absolute bottom-0 w-full  '>
                                     <div className='p-6 flex items-center justify-between g-4 '>
                                         <div className=''>
-                                            <span className='text-white font-semibold text-base'>Mr Chiranjeevi </span>
-                                            <p className='text-gray-300  text-sm   ' >A paradise tucked away from the ...</p>
+                                            <span className='text-white font-semibold text-base'>{video.heading}</span>
+                                            <p className='text-gray-300  text-sm   ' >{video.paragraph}</p>
                                         </div>
                                         <a className='border backdrop-blur-2xl bg-white/10 text-white border-white border-2 px-5 py-2 rounded-full '>
                                                  <ArrowRight />
                                                  
                                         </a>
                                     </div>
-
-
-
-
                                 </div>
                             </div>
 
